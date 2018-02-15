@@ -75,4 +75,7 @@ deck.appendChild(fragment);
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
- 
+// on click show or remove symbol
+ document.addEventListener('click', function(event) {
+   event.target.classList.toggle('show');
+ });
