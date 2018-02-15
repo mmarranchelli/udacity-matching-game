@@ -2,6 +2,16 @@
  * Create a list that holds all of your cards
  */
 
+const allCards = [
+  "diamond",
+  "paper-plane-o",
+  "anchor",
+  "bolt",
+  "cube",
+  "leaf",
+  "bicyle",
+  "bomb"
+];
 
 /*
  * Display the cards on the page
