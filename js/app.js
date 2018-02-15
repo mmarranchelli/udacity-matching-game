@@ -76,6 +76,7 @@ deck.appendChild(fragment);
  */
 
 let selectedCardCounter = 0;
+let selectedCards = [];
 const allCards = document.querySelectorAll('li.card');
 
 // on click add or remove symbol
@@ -86,6 +87,7 @@ function toggleSymbol () {
   document.addEventListener('click', function(event) {
     event.target.classList.toggle('show');
     selectedCardCounter++;
+    selectedCards.push(event.target);
 
     if (selectedCardCounter >= 3) {
       removeShow(allCards);
@@ -97,7 +99,6 @@ function toggleSymbol () {
 // remove on all cards show
 function removeShow(array) {
   for(let i = 0; i < array.length; i++) {
-    console.log(array[i]);
     array[i].classList.remove('show');
   }
 }
