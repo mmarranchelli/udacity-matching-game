@@ -2,7 +2,7 @@
  * Create a list that holds all of your cards
  */
 
-const allCards = [
+const symbolsForAllCards = [
   "diamond",
   "paper-plane-o",
   "anchor",
@@ -20,15 +20,6 @@ const allCards = [
   "bicycle",
   "bomb"
 ];
-
-/*
- * Create a Array for Index of the length of allCards
- */
-const ArrayIndex = [];
-
-for (let i = 1; i <= allCards.length; i++) {
-  ArrayIndex.push(i);
-}
 
 
 /*
@@ -54,7 +45,7 @@ function shuffle(array) {
 }
 
 // Create array with random card position
-const randomCards = shuffle(allCards);
+const randomCards = shuffle(symbolsForAllCards);
 
 // Adding li to ul
 const deck = document.querySelector(".deck");
@@ -84,10 +75,29 @@ deck.appendChild(fragment);
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
- // Add class to card when clicked
- document.addEventListener('click', function(event) {
-   if (event.target.nodeName === "LI") {
-     event.target.classList.toggle('show');
-   }
+const allCards = document.querySelectorAll('li.card');
 
+ // Event listener on the cards
+ let selectedCards = 0;
+ document.addEventListener('click', function(event) {
+   toggleClassShow(event);
+   selectedCards++;
+   if (selectedCards == 2) {
+     setTimeout(removeClassShow, 3000);
+
+     selectedCards = 0;
+   }
+   console.log(selectedCards);
  });
+
+// Function to add class show to clicked cards
+ function toggleClassShow(clickedCard) {
+    clickedCard.target.classList.toggle('show');
+ }
+
+ // Function to remove all show classes
+ function removeClassShow() {
+   for (let i = 0; i < allCards.length; i++) {
+     allCards[i].classList.remove('show');
+   }
+ }
