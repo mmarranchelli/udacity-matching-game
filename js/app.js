@@ -75,6 +75,9 @@ deck.appendChild(fragment);
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+let selectedCardCounter = 0;
+const allCards = document.querySelectorAll('li.card');
+
 // on click add or remove symbol
 document.addEventListener('click', toggleSymbol());
 
@@ -82,8 +85,19 @@ document.addEventListener('click', toggleSymbol());
 function toggleSymbol () {
   document.addEventListener('click', function(event) {
     event.target.classList.toggle('show');
+    selectedCardCounter++;
+
+    if (selectedCardCounter >= 3) {
+      removeShow(allCards);
+      selectedCardCounter = 0;
+    }
   });
 }
 
-
- //
+// remove on all cards show
+function removeShow(array) {
+  for(let i = 0; i < array.length; i++) {
+    console.log(array[i]);
+    array[i].classList.remove('show');
+  }
+}
