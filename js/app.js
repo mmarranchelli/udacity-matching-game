@@ -83,3 +83,11 @@ deck.appendChild(fragment);
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+ // Add class to card when clicked
+ document.addEventListener('click', function(event) {
+   if (event.target.nodeName === "LI") {
+     event.target.classList.toggle('show');
+   }
+
+ });
