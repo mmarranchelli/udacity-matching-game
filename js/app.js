@@ -75,29 +75,4 @@ deck.appendChild(fragment);
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-const allCards = document.querySelectorAll('li.card');
-
- // Event listener on the cards
- let selectedCards = 0;
- document.addEventListener('click', function(event) {
-   toggleClassShow(event);
-   selectedCards++;
-   if (selectedCards == 2) {
-     setTimeout(removeClassShow, 3000);
-
-     selectedCards = 0;
-   }
-   console.log(selectedCards);
- });
-
-// Function to add class show to clicked cards
- function toggleClassShow(clickedCard) {
-    clickedCard.target.classList.toggle('show');
- }
-
- // Function to remove all show classes
- function removeClassShow() {
-   for (let i = 0; i < allCards.length; i++) {
-     allCards[i].classList.remove('show');
-   }
- }
+ 
