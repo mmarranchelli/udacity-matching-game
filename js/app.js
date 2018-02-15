@@ -9,7 +9,15 @@ const allCards = [
   "bolt",
   "cube",
   "leaf",
-  "bicyle",
+  "bicycle",
+  "bomb",
+  "diamond",
+  "paper-plane-o",
+  "anchor",
+  "bolt",
+  "cube",
+  "leaf",
+  "bicycle",
   "bomb"
 ];
 
@@ -45,10 +53,25 @@ function shuffle(array) {
     return array;
 }
 
-
-
+// Create array with random card position
 const randomCards = shuffle(allCards);
-console.log(randomCards[0]);
+
+// Adding li to ul
+const deck = document.querySelector(".deck");
+
+const fragment = document.createDocumentFragment();
+
+for (let i = 0; i < 16; i++) {
+  const newElement = document.createElement('li');
+  newElement.classList.add('card');
+  newElement.innerHTML = '<i class="fa fa-' + randomCards[i] + '"></i>';
+  fragment.appendChild(newElement);
+}
+deck.appendChild(fragment);
+
+
+
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
