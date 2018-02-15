@@ -14,6 +14,16 @@ const allCards = [
 ];
 
 /*
+ * Create a Array for Index of the length of allCards
+ */
+const ArrayIndex = [];
+
+for (let i = 1; i <= allCards.length; i++) {
+  ArrayIndex.push(i);
+}
+
+
+/*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
  *   - loop through each card and create its HTML
@@ -35,6 +45,10 @@ function shuffle(array) {
     return array;
 }
 
+
+
+const randomCards = shuffle(allCards);
+console.log(randomCards[0]);
 
 /*
  * set up the event listener for a card. If a card is clicked:
