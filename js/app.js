@@ -83,30 +83,42 @@ let eventCounter = 0;
 const allCards = document.querySelectorAll('li.card');
 
 // Event listener to add or remove symbol
-document.addEventListener('click', toggleSymbol());
+document.addEventListener('click', play());
 
-// Function to toggle show on click and
+// function play
+function play() {
+  countFiredEvents();
+  toggleSymbol();
+  addToSelectedCards();
+}
+
+
+
+// count fired events
+function countFiredEvents() {
+  document.addEventListener('click', function(event) {
+     if (event.target.classList == "card") {
+      eventCounter += event.detail;
+     }
+  });
+}
+
+// Function to toggle show on click
 function toggleSymbol () {
   document.addEventListener('click', function(event) {
     event.target.classList.toggle('show');
-    addToSelectedCards();
-    countFiredEvents(event);
-    resetEventCounter();
-    console.log(selectedCards[0]);
-    // console.log(selectedCard2);
-
-    // if(selectedCard1 == selectedCard2) {
-    //   event.target.classList.add('match');
-    // } else {
-    //   console.log("nope");
-    // }
   });
 }
 
 // Function to add clicked card to Array selectedCards
-function addToSelectedCards(){
-  selectedCards.push(event);
+function addToSelectedCards() {
+  document.addEventListener('click', function(event) {
+    selectedCards.push(event);
+    console.log(selectedCards[0]);
+  });
 }
+
+
 
 // Function to reset EventCounter after 2 clicked cards
 // and removing class show from all cards
@@ -118,13 +130,14 @@ function resetEventCounter() {
   }
 }
 
-// count fired events
-function countFiredEvents(event) {
-  if (event.target.nodeName == "LI") {
-    eventCounter += event.detail;
+// Function: after 2 Array values clear array selectedCards
+function clearSelectedCards() {
+  if (selectedCards.length == 3) {
+    selectedCards.pop();
+    selectedCards.pop();
+    selectedCards.pop();
   }
 }
-
 
 
 
