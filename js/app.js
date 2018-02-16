@@ -76,11 +76,16 @@ deck.appendChild(fragment);
  */
 
 // Array for the 2 selected cards
-let selectedCards = [];
+let openCards = [];
 
 // Variable holding all cards
 const allCards = document.querySelectorAll('li.card');
 
 document.addEventListener('click', function(event) {
+  toggleShow();
+});
 
-})
+// function to toggle class show
+function toggleShow() {
+  event.target.classList.toggle('show');
+}
