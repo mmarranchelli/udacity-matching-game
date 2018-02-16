@@ -82,9 +82,14 @@ let openCards = [];
 const allCards = document.querySelectorAll('li.card');
 
 let moveCounter = 0;
+let moveCounterDisplay = document.querySelector('.moves');
+let movesWordDisplay = document.querySelector('.moves-word');
+
+moveCounterDisplay.textContent = moveCounter;
 
 document.addEventListener('click', function(event) {
   moveCounter += 1;
+  updateMoveCounter();
   toggleShow();
   addToOpenCards();
   if(openCards.length > 1) {
@@ -96,6 +101,19 @@ document.addEventListener('click', function(event) {
     }
   }
 });
+
+// function increment moveCounter
+function updateMoveCounter() {
+  if (moveCounter == 1) {
+    movesWordDisplay.textContent = 'Move';
+    moveCounterDisplay.textContent = moveCounter;
+  } else {
+    movesWordDisplay.textContent = 'Moves';
+    moveCounterDisplay.textContent = moveCounter;
+  }
+}
+
+
 
 // function to toggle class show
 function toggleShow() {
