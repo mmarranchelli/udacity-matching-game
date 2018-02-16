@@ -55,7 +55,7 @@ const fragment = document.createDocumentFragment();
 for (let i = 0; i < 16; i++) {
   const newElement = document.createElement('li');
   newElement.classList.add('card');
-  newElement.innerHTML = '<i class="fa fa-' + randomCards[i] + '"></i>';
+  newElement.innerHTML = '<i class="fa fa-' + randomCards[0] + '"></i>';
   fragment.appendChild(newElement);
 }
 deck.appendChild(fragment);
@@ -83,9 +83,37 @@ const allCards = document.querySelectorAll('li.card');
 
 document.addEventListener('click', function(event) {
   toggleShow();
+  addToOpenCards();
+  if(openCards.length > 1) {
+    if(openCards[0].innerHTML == openCards[1].innerHTML) {
+      console.log('match');
+      // addMatch();
+    }
+    else {
+      console.log('nope');
+      // resetCards();
+    }
+  }
 });
 
 // function to toggle class show
 function toggleShow() {
   event.target.classList.toggle('show');
+}
+
+// function to add value to array openCards
+function addToOpenCards() {
+  openCards.push(event.target)
+}
+
+// function to add class match
+function addMatch() {
+  event.target.classList.add('match');
+}
+
+// function to remove values from openCards
+function resetCards() {
+  openCards.pop();
+  openCards.pop();
+  event.target.classList.remove('show');
 }
