@@ -77,85 +77,10 @@ deck.appendChild(fragment);
 
 // Array for the 2 selected cards
 let selectedCards = [];
-// Variable to count fired click events
-let eventCounter = 0;
+
 // Variable holding all cards
 const allCards = document.querySelectorAll('li.card');
 
-// Event listener to add or remove symbol
-document.addEventListener('click', play());
+document.addEventListener('click', function(event) {
 
-// function play
-function play() {
-  countFiredEvents();
-  toggleSymbol();
-  addToSelectedCards();
-}
-
-
-
-// count fired events
-function countFiredEvents() {
-  document.addEventListener('click', function(event) {
-     if (event.target.classList == "card") {
-      eventCounter += event.detail;
-     }
-  });
-}
-
-// Function to toggle show on click
-function toggleSymbol () {
-  document.addEventListener('click', function(event) {
-    event.target.classList.toggle('show');
-  });
-}
-
-// Function to add clicked card to Array selectedCards
-function addToSelectedCards() {
-  document.addEventListener('click', function(event) {
-    selectedCards.push(event);
-    console.log(selectedCards[0]);
-  });
-}
-
-
-
-// Function to reset EventCounter after 2 clicked cards
-// and removing class show from all cards
-function resetEventCounter() {
-  if (eventCounter == 2) {
-    eventCounter = -1;
-  } else if (eventCounter == 0) {
-    removeShow(allCards);
-  }
-}
-
-// Function: after 2 Array values clear array selectedCards
-function clearSelectedCards() {
-  if (selectedCards.length == 3) {
-    selectedCards.pop();
-    selectedCards.pop();
-    selectedCards.pop();
-  }
-}
-
-
-
-// remove on all cards show
-function removeShow(array) {
-  for(let i = 0; i < array.length; i++) {
-    array[i].classList.remove('show');
-  }
-}
-
-// add match
-function addMatch(element) {
-  element.classList.add('match');
-}
-
-// Check equality of selected cards
-function checkMatch(array) {
-  for(let i = 0; i <= array.length; i++) {
-    console.log(array[i]);
-  }
-}
+})
