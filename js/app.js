@@ -55,7 +55,7 @@ const fragment = document.createDocumentFragment();
 for (let i = 0; i < 16; i++) {
   const newElement = document.createElement('li');
   newElement.classList.add('card');
-  newElement.innerHTML = '<i class="fa fa-' + randomCards[0] + '"></i>';
+  newElement.innerHTML = '<i class="fa fa-' + randomCards[i] + '"></i>';
   fragment.appendChild(newElement);
 }
 deck.appendChild(fragment);
@@ -86,12 +86,14 @@ document.addEventListener('click', function(event) {
   addToOpenCards();
   if(openCards.length > 1) {
     if(openCards[0].innerHTML == openCards[1].innerHTML) {
-      console.log('match');
-      // addMatch();
+      match();
     }
     else {
-      console.log('nope');
-      // resetCards();
+        openCards[0].classList.remove('show');
+        openCards[1].classList.remove('show');
+        openCards.pop();
+        openCards.pop();
+
     }
   }
 });
@@ -106,14 +108,10 @@ function addToOpenCards() {
   openCards.push(event.target)
 }
 
-// function to add class match
-function addMatch() {
-  event.target.classList.add('match');
-}
-
-// function to remove values from openCards
-function resetCards() {
+// function match
+function match() {
+  openCards[0].classList.add('match');
+  openCards[1].classList.add('match');
   openCards.pop();
   openCards.pop();
-  event.target.classList.remove('show');
 }
