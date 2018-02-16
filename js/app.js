@@ -81,9 +81,13 @@ let openCards = [];
 // Variable holding all cards
 const allCards = document.querySelectorAll('li.card');
 
+// Move counter
 let moveCounter = 0;
 let moveCounterDisplay = document.querySelector('.moves');
 let movesWordDisplay = document.querySelector('.moves-word');
+
+// Stars
+
 
 moveCounterDisplay.textContent = moveCounter;
 
@@ -95,6 +99,7 @@ document.addEventListener('click', function(event) {
   if(openCards.length > 1) {
     if(openCards[0].innerHTML == openCards[1].innerHTML) {
       match();
+      addStars();
     }
     else {
       setTimeout(resetCards, 1000);
@@ -114,7 +119,6 @@ function updateMoveCounter() {
 }
 
 
-
 // function to toggle class show
 function toggleShow() {
   event.target.classList.toggle('show');
@@ -131,6 +135,13 @@ function match() {
   openCards[1].classList.add('match');
   openCards.pop();
   openCards.pop();
+}
+
+// function add stars
+function addStars() {
+  const starsDisplay = document.querySelector('.stars');
+  const newStar = "<li><i class='fa fa-star'></i></li>";
+  starsDisplay.insertAdjacentHTML('beforeend', newStar);
 }
 
 // function resetCards
