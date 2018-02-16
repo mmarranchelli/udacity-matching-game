@@ -85,24 +85,22 @@ const allCards = document.querySelectorAll('li.card');
 let moveCounter = 0;
 let moveCounterDisplay = document.querySelector('.moves');
 let movesWordDisplay = document.querySelector('.moves-word');
-
-// Stars
-
-
 moveCounterDisplay.textContent = moveCounter;
 
 document.addEventListener('click', function(event) {
-  moveCounter += 1;
-  updateMoveCounter();
-  toggleShow();
-  addToOpenCards();
-  if(openCards.length > 1) {
-    if(openCards[0].innerHTML == openCards[1].innerHTML) {
-      match();
-      addStars();
-    }
-    else {
-      setTimeout(resetCards, 1000);
+  if (event.target.className == "card") {
+    moveCounter += 1;
+    updateMoveCounter();
+    toggleShow();
+    addToOpenCards();
+    if(openCards.length > 1) {
+      if(openCards[0].innerHTML == openCards[1].innerHTML) {
+        match();
+        addStars();
+      }
+      else {
+        setTimeout(resetCards, 1000);
+      }
     }
   }
 });
