@@ -75,30 +75,69 @@ deck.appendChild(fragment);
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-let selectedCardCounter = 0;
 let selectedCards = [];
+let selectedCard1 = "";
+let selectedCard2 = "";
+let eventCounter = 0;
 const allCards = document.querySelectorAll('li.card');
 
 // on click add or remove symbol
 document.addEventListener('click', toggleSymbol());
 
-// function toggle show
+// toggle show
 function toggleSymbol () {
   document.addEventListener('click', function(event) {
     event.target.classList.toggle('show');
-    selectedCardCounter++;
-    selectedCards.push(event.target);
+    selectedCards.push(event);
+    // selectedCard1 = selectedCards[0].target.firstChildElement;
+    // selectedCard2 = selectedCards[1].target.firstChildElement;
+    countFiredEvents(event);
+    resetEventCounter();
+    // console.log(selectedCard1);
+    // console.log(selectedCard2);
 
-    if (selectedCardCounter >= 3) {
-      removeShow(allCards);
-      selectedCardCounter = 0;
-    }
+    // if(selectedCard1 == selectedCard2) {
+    //   event.target.classList.add('match');
+    // } else {
+    //   console.log("nope");
+    // }
   });
 }
+
+
+// Reset EventCounter after 2 clicked cards
+function resetEventCounter() {
+  if (eventCounter == 2) {
+    eventCounter = -1;
+  } else if (eventCounter == 0) {
+    removeShow(allCards);
+  }
+}
+
+// count fired events
+function countFiredEvents(event) {
+  eventCounter += event.detail;
+  console.log(eventCounter);
+}
+
+
+
 
 // remove on all cards show
 function removeShow(array) {
   for(let i = 0; i < array.length; i++) {
     array[i].classList.remove('show');
+  }
+}
+
+// add match
+function addMatch(element) {
+  element.classList.add('match');
+}
+
+// Check equality of selected cards
+function checkMatch(array) {
+  for(let i = 0; i <= array.length; i++) {
+    console.log(array[i]);
   }
 }
