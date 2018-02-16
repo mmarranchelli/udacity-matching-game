@@ -75,25 +75,24 @@ deck.appendChild(fragment);
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+// Array for the 2 selected cards
 let selectedCards = [];
-let selectedCard1 = "";
-let selectedCard2 = "";
+// Variable to count fired click events
 let eventCounter = 0;
+// Variable holding all cards
 const allCards = document.querySelectorAll('li.card');
 
-// on click add or remove symbol
+// Event listener to add or remove symbol
 document.addEventListener('click', toggleSymbol());
 
-// toggle show
+// Function to toggle show on click and
 function toggleSymbol () {
   document.addEventListener('click', function(event) {
     event.target.classList.toggle('show');
-    selectedCards.push(event);
-    // selectedCard1 = selectedCards[0].target.firstChildElement;
-    // selectedCard2 = selectedCards[1].target.firstChildElement;
+    addToSelectedCards();
     countFiredEvents(event);
     resetEventCounter();
-    // console.log(selectedCard1);
+    console.log(selectedCards[0]);
     // console.log(selectedCard2);
 
     // if(selectedCard1 == selectedCard2) {
@@ -104,8 +103,13 @@ function toggleSymbol () {
   });
 }
 
+// Function to add clicked card to Array selectedCards
+function addToSelectedCards(){
+  selectedCards.push(event);
+}
 
-// Reset EventCounter after 2 clicked cards
+// Function to reset EventCounter after 2 clicked cards
+// and removing class show from all cards
 function resetEventCounter() {
   if (eventCounter == 2) {
     eventCounter = -1;
@@ -116,8 +120,9 @@ function resetEventCounter() {
 
 // count fired events
 function countFiredEvents(event) {
-  eventCounter += event.detail;
-  console.log(eventCounter);
+  if (event.target.nodeName == "LI") {
+    eventCounter += event.detail;
+  }
 }
 
 
