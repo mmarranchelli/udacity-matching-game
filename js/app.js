@@ -81,7 +81,10 @@ let openCards = [];
 // Variable holding all cards
 const allCards = document.querySelectorAll('li.card');
 
+let moveCounter = 0;
+
 document.addEventListener('click', function(event) {
+  moveCounter += 1;
   toggleShow();
   addToOpenCards();
   if(openCards.length > 1) {
@@ -89,11 +92,7 @@ document.addEventListener('click', function(event) {
       match();
     }
     else {
-        openCards[0].classList.remove('show');
-        openCards[1].classList.remove('show');
-        openCards.pop();
-        openCards.pop();
-
+      setTimeout(resetCards, 1000);
     }
   }
 });
@@ -112,6 +111,14 @@ function addToOpenCards() {
 function match() {
   openCards[0].classList.add('match');
   openCards[1].classList.add('match');
+  openCards.pop();
+  openCards.pop();
+}
+
+// function resetCards
+function resetCards() {
+  openCards[0].classList.remove('show');
+  openCards[1].classList.remove('show');
   openCards.pop();
   openCards.pop();
 }
