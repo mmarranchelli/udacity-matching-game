@@ -107,3 +107,26 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/*
+ * Win Message
+ */
+
+ h3:hover {
+   cursor: pointer;
+ }
+.win-message {
+  height: 680px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  position: relative;
+  top: -728px;
+  transition-delay: 0.5s;
+  padding: 150px;
+  text-align: center;
+}
+
+.display-none {
+  display: none;
+}

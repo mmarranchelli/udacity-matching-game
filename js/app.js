@@ -50,15 +50,21 @@ const randomCards = shuffle(symbolsForAllCards);
 // Adding li to ul
 const deck = document.querySelector(".deck");
 
-const fragment = document.createDocumentFragment();
+shuffleCards();
 
-for (let i = 0; i < 16; i++) {
-  const newElement = document.createElement('li');
-  newElement.classList.add('card');
-  newElement.innerHTML = '<i class="fa fa-' + randomCards[i] + '"></i>';
-  fragment.appendChild(newElement);
+function shuffleCards() {
+  const fragment = document.createDocumentFragment();
+
+  for (let i = 0; i < 16; i++) {
+    const newElement = document.createElement('li');
+    newElement.classList.add('card');
+    newElement.innerHTML = '<i class="fa fa-' + randomCards[i] + '"></i>';
+    fragment.appendChild(newElement);
+  }
+  deck.appendChild(fragment);
+
 }
-deck.appendChild(fragment);
+
 
 
 
@@ -99,6 +105,13 @@ restartButton.addEventListener('click', function() {
   restartGame();
 });
 
+// Win message area
+const winMessage = document.querySelector('.win-message');
+const winMoves = document.querySelector('.win-moves');
+const restartButtonWinMessage = document.querySelector('.win-message-restart');
+restartButtonWinMessage.addEventListener('click', function() {
+  restartGame();
+});
 
 
 document.addEventListener('click', function(event) {
@@ -173,7 +186,8 @@ function resetNotMatchedCards() {
 // function win
 function win() {
   if (matchCounter == 8) {
-    console.log('End of Game');
+    winMessage.classList.remove('display-none');
+    winMoves.innerText = moveCounter;
   }
 }
 
@@ -193,4 +207,6 @@ function restartGame() {
   updateMoveCounter();
   matchCounter = 0;
   removeStars();
+  winMessage.classList.add('display-none');
+  window.location.reload(true);
 }

@@ -18,21 +18,29 @@
     </header>
 
     <section class="score-panel">
+
       <ul class="stars">
       </ul>
 
-      <span class="moves">3</span> <span class="moves-word">Moves</span>
+      <span class="moves"></span> <span class="moves-word">Moves</span>
 
       <div class="restart">
         <i class="fa fa-repeat"></i>
       </div>
     </section>
-    <!-- class: open show match -->
-    <ul class="deck">
-
-    </ul>
-
-
+    <section>
+      <ul class="deck">
+      </ul>
+      <div class="win-message display-none">
+        <h2>Great!</h2>
+        <p>
+          You solved this memory game in <span class="win-moves"></span> moves!
+        </p>
+        <div class="win-message-restart">
+          <h3><i class="fa fa-repeat"></i> Restart Game</h3>
+        </div>
+      </div>
+    </section>
   </div>
 
   <script src="js/app.js"></script>
