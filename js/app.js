@@ -62,7 +62,6 @@ function shuffleCards() {
     fragment.appendChild(newElement);
   }
   deck.appendChild(fragment);
-
 }
 
 
@@ -96,7 +95,7 @@ moveCounterDisplay.textContent = moveCounter;
 // Match Counter
 let matchCounter = 0;
 
-// Stars Display
+// Display Stars
 const starsDisplay = document.querySelector('ul.stars');
 
 // Game restart button
@@ -170,11 +169,10 @@ function addStars() {
   starsDisplay.insertAdjacentHTML('beforeend', newStar);
 }
 
-// function to remove remove stars
+// function to remove stars
 function removeStars() {
   starsDisplay.innerHTML = "";
 }
-
 
 // function to reset not Matched Cards
 function resetNotMatchedCards() {
