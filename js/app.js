@@ -90,14 +90,15 @@ moveCounterDisplay.textContent = moveCounter;
 // Match Counter
 let matchCounter = 0;
 
+// Stars Display
+const starsDisplay = document.querySelector('ul.stars');
+
 // Game restart button
 const restartButton = document.querySelector('.restart');
 restartButton.addEventListener('click', function() {
-  allCards.forEach(function(element) {
-    element.classList.remove('show');
-    console.log(element);
-  });
+  restartGame();
 });
+
 
 
 document.addEventListener('click', function(event) {
@@ -152,10 +153,15 @@ function match() {
 
 // function add stars
 function addStars() {
-  const starsDisplay = document.querySelector('.stars');
   const newStar = "<li><i class='fa fa-star'></i></li>";
   starsDisplay.insertAdjacentHTML('beforeend', newStar);
 }
+
+// function to remove remove stars
+function removeStars() {
+  starsDisplay.innerHTML = "";
+}
+
 
 // function to reset not Matched Cards
 function resetNotMatchedCards() {
@@ -164,10 +170,27 @@ function resetNotMatchedCards() {
   openCards.splice(0, 2);
 }
 
-
 // function win
 function win() {
   if (matchCounter == 8) {
     console.log('End of Game');
   }
+}
+
+// function to remove class show on all cards
+function removeShowAndMatchOnAllCards() {
+  allCards.forEach(function(element) {
+    element.classList.remove('show');
+    element.classList.remove('match');
+  });
+}
+
+// function restart game
+function restartGame() {
+  removeShowAndMatchOnAllCards();
+  openCards.splice(0);
+  moveCounter = 0;
+  updateMoveCounter();
+  matchCounter = 0;
+  removeStars();
 }
