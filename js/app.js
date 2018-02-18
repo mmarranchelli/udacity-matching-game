@@ -87,6 +87,19 @@ let moveCounterDisplay = document.querySelector('.moves');
 let movesWordDisplay = document.querySelector('.moves-word');
 moveCounterDisplay.textContent = moveCounter;
 
+// Match Counter
+let matchCounter = 0;
+
+// Game restart button
+const restartButton = document.querySelector('.restart');
+restartButton.addEventListener('click', function() {
+  allCards.forEach(function(element) {
+    element.classList.remove('show');
+    console.log(element);
+  });
+});
+
+
 document.addEventListener('click', function(event) {
   if (event.target.className == "card") {
     moveCounter += 1;
@@ -97,9 +110,10 @@ document.addEventListener('click', function(event) {
       if(openCards[0].innerHTML == openCards[1].innerHTML) {
         match();
         addStars();
+        win();
       }
-      else {
-        setTimeout(resetCards, 1000);
+      else if (openCards.length > 2) {
+        resetNotMatchedCards();
       }
     }
   }
@@ -133,6 +147,7 @@ function match() {
   openCards[1].classList.add('match');
   openCards.pop();
   openCards.pop();
+  matchCounter += 1;
 }
 
 // function add stars
@@ -142,10 +157,17 @@ function addStars() {
   starsDisplay.insertAdjacentHTML('beforeend', newStar);
 }
 
-// function resetCards
-function resetCards() {
+// function to reset not Matched Cards
+function resetNotMatchedCards() {
   openCards[0].classList.remove('show');
   openCards[1].classList.remove('show');
-  openCards.pop();
-  openCards.pop();
+  openCards.splice(0, 2);
+}
+
+
+// function win
+function win() {
+  if (matchCounter == 8) {
+    console.log('End of Game');
+  }
 }
