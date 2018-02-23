@@ -86,6 +86,9 @@ let openCards = [];
 // Variable holding all cards
 const allCards = document.querySelectorAll('li.card');
 
+// Listener counter
+let listenerCounter = 0;
+
 // Move counter
 let moveCounter = 0;
 let moveCounterDisplay = document.querySelector('.moves');
@@ -146,14 +149,17 @@ restartButtonWinMessage.addEventListener('click', function() {
   restartGame();
 });
 
-
+// Event Listener for clicking on a card
 document.addEventListener('click', function(event) {
   if (event.target.className == "card") {
-    moveCounter += 1;
-    updateMoveCounter();
+    listenerCounter += 1;
+    if (listenerCounter % 2 == 0) {
+      moveCounter += 1;
+      updateMoveCounter();
+    }
     toggleShow();
     addToOpenCards();
-    if(moveCounter == 1) {
+    if(listenerCounter == 1) {
       startTimerCounter();
     }
     if(openCards.length > 1) {
@@ -239,6 +245,7 @@ function removeShowAndMatchOnAllCards() {
 function restartGame() {
   removeShowAndMatchOnAllCards();
   openCards.splice(0);
+  listenerCounter = 0;
   moveCounter = 0;
   updateMoveCounter();
   matchCounter = 0;
