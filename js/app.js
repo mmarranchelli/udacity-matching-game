@@ -104,6 +104,40 @@ restartButton.addEventListener('click', function() {
   restartGame();
 });
 
+// Timer Counter
+const minutesLabel = document.getElementsByClassName("minutes");
+const secondsLabel = document.getElementsByClassName("seconds");
+let totalSeconds = 0;
+let timerCounterId;
+
+// function to start timer counter
+function startTimerCounter() {
+  timerCounterId = window.setInterval(setTime, 1000);
+}
+
+// function to stop timer counter
+function stopTimerCounter() {
+  clearTimeout(timerCounterId);
+}
+
+// function setTime
+function setTime() {
+  ++totalSeconds;
+  secondsLabel[0].innerHTML = pad(totalSeconds % 60);
+  secondsLabel[1].innerHTML = pad(totalSeconds % 60);
+  minutesLabel[0].innerHTML = pad(parseInt(totalSeconds / 60));
+  minutesLabel[1].innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(val) {
+  var valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+
 // Win message area
 const winMessage = document.querySelector('.win-message');
 const winMoves = document.querySelector('.win-moves');
@@ -119,6 +153,9 @@ document.addEventListener('click', function(event) {
     updateMoveCounter();
     toggleShow();
     addToOpenCards();
+    if(moveCounter == 1) {
+      startTimerCounter();
+    }
     if(openCards.length > 1) {
       if(openCards[0].innerHTML == openCards[1].innerHTML) {
         match();
@@ -186,6 +223,7 @@ function win() {
   if (matchCounter == 8) {
     winMessage.classList.remove('display-none');
     winMoves.innerText = moveCounter;
+    stopTimerCounter();
   }
 }
 

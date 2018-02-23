@@ -108,6 +108,12 @@ h1 {
     cursor: pointer;
 }
 
+.score-panel .timer {
+    float: right;
+    margin: 0 30px 0 0;
+    cursor: pointer;
+}
+
 /*
  * Win Message
  */
