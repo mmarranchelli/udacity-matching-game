@@ -162,10 +162,10 @@ document.addEventListener('click', function(event) {
     if(listenerCounter == 1) {
       startTimerCounter();
     }
+    removeStars();
     if(openCards.length > 1) {
       if(openCards[0].innerHTML == openCards[1].innerHTML) {
         match();
-        addStars();
         win();
       }
       else if (openCards.length > 2) {
@@ -206,15 +206,20 @@ function match() {
   matchCounter += 1;
 }
 
-// function add stars
-function addStars() {
-  const newStar = "<li><i class='fa fa-star'></i></li>";
-  starsDisplay.insertAdjacentHTML('beforeend', newStar);
-}
+// function to check quantity of stars
+function checkStars() {
 
-// function to remove stars
+}
+// function remove stars
 function removeStars() {
-  starsDisplay.innerHTML = "";
+  let oneStar = starsDisplay.firstElementChild;
+  if(listenerCounter == 20) {
+    starsDisplay.removeChild(oneStar);
+  } else if (listenerCounter == 40) {
+    starsDisplay.removeChild(oneStar);
+  } else if (listenerCounter == 60) {
+    starsDisplay.removeChild(oneStar);
+  }
 }
 
 // function to reset not Matched Cards
@@ -232,6 +237,13 @@ function win() {
     stopTimerCounter();
   }
 }
+
+// function to add stars on win Message
+// function winStars() {
+//   for(let i = 0; i = starsDisplay.childElementCount; i++) {
+//     console.log(i);
+//   }
+// }
 
 // function to remove class show on all cards
 function removeShowAndMatchOnAllCards() {
