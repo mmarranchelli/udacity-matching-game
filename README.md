@@ -25,5 +25,3 @@ I used Git for versioning. The latest version is the actual version on Github.
 
 * **Marco Marranchelli** - *Development of functionalties* - [mmarranchelli](https://github.com/mmarranchelli)
 * **Udacity** - *Initial work and design* - [Udacity](https://github.com/udacity)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
