@@ -13,7 +13,7 @@ To run the game you need a working internet connection.
 
 ## Framework used
 
-* [Bootstrap Font Awesome](https://fontawesome.com/ - The icon framework used
+* [Bootstrap Font Awesome](https://fontawesome.com/) - The icon framework used
 * [Google Fonts](https://fonts.google.com/) - Fonts used
 
 
