@@ -1,20 +1,29 @@
-# Memory Game Project
+# Udacity Project - Matching Game
 
-## Table of Contents
+This memory game has been created as a project for the second section of the front end developer nanodegree.
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+## Getting Started
 
-## Instructions
+You can download or clone the files and run it on your local machine or on a web server.
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+### Prerequisites
 
-To get started, open `js/app.js` and start building out the app's functionality
+To run the game you need a working internet connection.
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
-## Contributing
+## Framework used
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+* [Bootstrap Font Awesome](https://fontawesome.com/ - The icon framework used
+* [Google Fonts](https://fonts.google.com/) - Fonts used
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Versioning
+
+I used Git for versioning. The latest version is the actual version on Github.
+
+## Authors
+
+* **Marco Marranchelli** - *Development of functionalties* - [mmarranchelli](https://github.com/mmarranchelli)
+* **Udacity** - *Initial work and design* - [Udacity](https://github.com/udacity)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
