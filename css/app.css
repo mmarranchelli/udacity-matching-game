@@ -98,7 +98,7 @@ h1 {
     margin: 0 5px 0 0;
 }
 
-.score-panel .stars li {
+.score-panel .stars li, .win-stars li {
     list-style: none;
     display: inline-block;
 }
@@ -131,6 +131,10 @@ h1 {
   transition-delay: 0.5s;
   padding: 150px;
   text-align: center;
+}
+
+.win-stars {
+  padding: 0;
 }
 
 .display-none {

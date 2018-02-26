@@ -99,6 +99,7 @@ moveCounterDisplay.textContent = moveCounter;
 let matchCounter = 0;
 
 // Display Stars
+let starsDisplayCount = 3;
 const starsDisplay = document.querySelector('ul.stars');
 
 // Game restart button
@@ -142,6 +143,7 @@ function pad(val) {
 }
 
 // Win message area
+const winStars = document.querySelector('.win-stars');
 const winMessage = document.querySelector('.win-message');
 const winMoves = document.querySelector('.win-moves');
 const restartButtonWinMessage = document.querySelector('.win-message-restart');
@@ -206,19 +208,19 @@ function match() {
   matchCounter += 1;
 }
 
-// function to check quantity of stars
-function checkStars() {
 
-}
 // function remove stars
 function removeStars() {
   let oneStar = starsDisplay.firstElementChild;
   if(listenerCounter == 20) {
     starsDisplay.removeChild(oneStar);
+    starsDisplayCount -= 1;
   } else if (listenerCounter == 40) {
     starsDisplay.removeChild(oneStar);
+    starsDisplayCount -= 1;
   } else if (listenerCounter == 60) {
     starsDisplay.removeChild(oneStar);
+    starsDisplayCount -= 1;
   }
 }
 
@@ -235,15 +237,18 @@ function win() {
     winMessage.classList.remove('display-none');
     winMoves.innerText = moveCounter;
     stopTimerCounter();
+    addStarsOnWinMessage();
   }
 }
 
 // function to add stars on win Message
-// function winStars() {
-//   for(let i = 0; i = starsDisplay.childElementCount; i++) {
-//     console.log(i);
-//   }
-// }
+function addStarsOnWinMessage() {
+  for (let i = 1; i <= starsDisplayCount; i++) {
+    let htmlToAdd = "<li><i class='fa fa-star'></i></li>";
+    winStars.insertAdjacentHTML('afterbegin', htmlToAdd);
+  }
+}
+
 
 // function to remove class show on all cards
 function removeShowAndMatchOnAllCards() {
