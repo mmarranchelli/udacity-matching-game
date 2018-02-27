@@ -218,9 +218,6 @@ function removeStars() {
   } else if (listenerCounter == 40) {
     starsDisplay.removeChild(oneStar);
     starsDisplayCount -= 1;
-  } else if (listenerCounter == 60) {
-    starsDisplay.removeChild(oneStar);
-    starsDisplayCount -= 1;
   }
 }
 
